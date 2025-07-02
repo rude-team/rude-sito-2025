@@ -9,9 +9,9 @@ export default function Home() {
     <main className="h-screen w-full flex flex-col items-center justify-center text-center px-4">
       {/* Logo */}
       <motion.div
-        initial={{ x: '-100vw', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 60, duration: 2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 2 }}
         className="mb-8"
       >
         <Image src="/rude_logo.png" alt="RUDE logo" width={200} height={100} />
@@ -23,26 +23,22 @@ export default function Home() {
          <motion.p
            initial={{ x: '-100vw', opacity: 0 }}
            animate={{ x: 0, opacity: 1 }}
-           transition={{ delay: 1.2, duration: 2 }}
+           transition={{ delay: 2.5, duration: 2 }}
            className="text-xl md:text-xl mb-4 md:mb-0 md:mr-4 whitespace-nowrap"
          >
            forse quelli della mala
          </motion.p>
 
-         {/* Lapide */}
-         <motion.div
-           initial={{ x: '100vw', opacity: 0 }}
-           animate={{ x: 0, opacity: 1 }}
-           transition={{ delay: 0.6, type: 'spring', stiffness: 60, duration: 2 }}
-         >
+         {/* Lapide - già visibile senza animazioni */}
+         <div>
            <Image src="/lapide.png" alt="Lapide" width={300} height={300} />
-         </motion.div>
+         </div>
 
          {/* Frase destra - sotto su mobile, a destra su desktop */}
          <motion.p
            initial={{ x: '100vw', opacity: 0 }}
            animate={{ x: 0, opacity: 1 }}
-           transition={{ delay: 1.8, duration: 2 }}
+           transition={{ delay: 2.5, duration: 2 }}
            className="text-xl md:text-xl mt-4 md:mt-0 md:ml-4 whitespace-nowrap"
          >
            forse la pubblicità
@@ -54,7 +50,7 @@ export default function Home() {
         className="flex gap-10 mt-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4, duration: 2 }}
+        transition={{ delay: 0.5, duration: 2 }}
       >
         <Link href="https://www.instagram.com/rude___team/" target="_blank" rel="noopener noreferrer">
           <Image src="/instagram.svg" alt="Instagram" width={32} height={32} />
@@ -70,7 +66,7 @@ export default function Home() {
            className="text-lg md:text-xl mt-4"
            initial={{ opacity: 0 }}
            animate={{ opacity: 1 }}
-           transition={{ delay: 5, duration: 2 }}
+           transition={{ delay: 0.5, duration: 2 }}
          >
            via arquà 13, milano
          </motion.p>
