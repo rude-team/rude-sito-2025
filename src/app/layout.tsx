@@ -4,8 +4,11 @@ import { Playfair_Display } from 'next/font/google'
 const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
-  title: 'Landing Page RUDE',
+  title: 'rude',
   description: 'Forse quelli della mala, forse la pubblicità.',
+  icons: {
+    icon: '/favicon_01.png',
+  },
 }
 
 export default function RootLayout({

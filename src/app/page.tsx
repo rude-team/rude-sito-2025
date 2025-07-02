@@ -23,7 +23,7 @@ export default function Home() {
          <motion.p
            initial={{ x: '-100vw', opacity: 0 }}
            animate={{ x: 0, opacity: 1 }}
-           transition={{ delay: 2.5, duration: 2 }}
+           transition={{ delay: 1, duration: 2 }}
            className="text-xl md:text-xl mb-4 md:mb-0 md:mr-4 whitespace-nowrap"
          >
            forse quelli della mala
@@ -38,7 +38,7 @@ export default function Home() {
          <motion.p
            initial={{ x: '100vw', opacity: 0 }}
            animate={{ x: 0, opacity: 1 }}
-           transition={{ delay: 2.5, duration: 2 }}
+           transition={{ delay: 1, duration: 2 }}
            className="text-xl md:text-xl mt-4 md:mt-0 md:ml-4 whitespace-nowrap"
          >
            forse la pubblicità
