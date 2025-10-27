@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "slug": "project-1",
+      "title": "Progetto Alpha",
+      "description": "Descrizione breve del primo progetto",
+      "longDescription": "Descrizione dettagliata del primo progetto con tutti i dettagli e le specifiche tecniche.",
+      "image": "",
+      "category": "Branding",
+      "year": "2024",
+      "client": "Client Alpha",
+      "tags": ["branding", "identity", "print"]
+    },
+    {
+      "id": 2,
+      "slug": "project-2", 
+      "title": "Progetto Beta",
+      "description": "Descrizione breve del secondo progetto",
+      "longDescription": "Descrizione dettagliata del secondo progetto con focus su digital e user experience.",
+      "image": "",
+      "category": "Digital",
+      "year": "2024",
+      "client": "Client Beta",
+      "tags": ["digital", "ux", "ui"]
+    },
+    {
+      "id": 3,
+      "slug": "project-3",
+      "title": "Progetto Gamma",
+      "description": "Descrizione breve del terzo progetto",
+      "longDescription": "Descrizione dettagliata del terzo progetto che include elementi di comunicazione e marketing.",
+      "image": "",
+      "category": "Communication",
+      "year": "2023",
+      "client": "Client Gamma",
+      "tags": ["communication", "marketing", "strategy"]
+    },
+    {
+      "id": 4,
+      "slug": "project-4",
+      "title": "Progetto Delta",
+      "description": "Descrizione breve del quarto progetto",
+      "longDescription": "Descrizione dettagliata del quarto progetto.",
+      "image": "",
+      "category": "Web",
+      "year": "2024",
+      "client": "Client Delta",
+      "tags": ["web", "development", "design"]
+    },
+    {
+      "id": 5,
+      "slug": "project-5",
+      "title": "Progetto Epsilon",
+      "description": "Descrizione breve del quinto progetto",
+      "longDescription": "Descrizione dettagliata del quinto progetto.",
+      "image": "",
+      "category": "Print",
+      "year": "2023",
+      "client": "Client Epsilon",
+      "tags": ["print", "editorial", "design"]
+    },
+    {
+      "id": 6,
+      "slug": "project-6",
+      "title": "Progetto Zeta",
+      "description": "Descrizione breve del sesto progetto",
+      "longDescription": "Descrizione dettagliata del sesto progetto.",
+      "image": "",
+      "category": "Motion",
+      "year": "2024",
+      "client": "Client Zeta",
+      "tags": ["motion", "video", "animation"]
+    },
+    {
+      "id": 7,
+      "slug": "project-7",
+      "title": "Progetto Eta",
+      "description": "Descrizione breve del settimo progetto",
+      "longDescription": "Descrizione dettagliata del settimo progetto.",
+      "image": "",
+      "category": "Packaging",
+      "year": "2023",
+      "client": "Client Eta",
+      "tags": ["packaging", "product", "design"]
+    },
+    {
+      "id": 8,
+      "slug": "project-8",
+      "title": "Progetto Theta",
+      "description": "Descrizione breve dell'ottavo progetto",
+      "longDescription": "Descrizione dettagliata dell'ottavo progetto.",
+      "image": "",
+      "category": "Art Direction",
+      "year": "2024",
+      "client": "Client Theta",
+      "tags": ["art direction", "creative", "concept"]
+    }
+  ]
+}

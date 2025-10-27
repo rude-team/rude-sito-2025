@@ -7,15 +7,6 @@ import { motion } from 'framer-motion'
 export default function Home() {
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-8 md:pt-0">
-      {/* Logo */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 2 }}
-        className="mb-8"
-      >
-        <Image src="/rude_logo.png" alt="RUDE logo" width={200} height={100} />
-      </motion.div>
 
       {/* Frasi + Lapide */}
       {/* Frasi + Lapide */}
@@ -54,19 +45,19 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 1 }}
       >
         <Link href="https://www.instagram.com/rude___team/" target="_blank" rel="noopener noreferrer">
-          <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="md:w-8 md:h-8" />
+          <Image src="/instagram.svg" alt="Instagram" width={16} height={16} className="md:w-5 md:h-5" />
         </Link>
         <Link href="https://www.linkedin.com/company/rudeteam/" target="_blank" rel="noopener noreferrer">
-          <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} className="md:w-8 md:h-8" />
+          <Image src="/linkedin.svg" alt="LinkedIn" width={16} height={16} className="md:w-5 md:h-5" />
         </Link>
         <a href="mailto:info@rude.team">
-          <Image src="/mail.svg" alt="Email" width={24} height={24} className="md:w-8 md:h-8" />
+          <Image src="/mail_quadrata.svg" alt="Email" width={16} height={16} className="md:w-5 md:h-5" />
         </a>
       </motion.div>
 
       {/* Indirizzo */}
       <motion.p
-        className="text-sm md:text-lg mt-1"
+        className="text-sm md:text-sm mt-1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
