@@ -6,7 +6,7 @@ interface ProjectCardProps {
     id: number
     slug: string
     title: string
-    description: string
+    client: string
     image?: string
   }
 }
@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <h3 className="text-xl font-bold group-hover:underline transition-all">
         {project.title}
       </h3>
-      <p className="text-sm text-gray-600 mt-1">{project.description}</p>
+      <p className="text-sm text-gray-600 mt-1">{project.client}</p>
     </Link>
   )
 }
