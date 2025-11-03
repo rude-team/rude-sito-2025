@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-8 md:pt-0 md:-mt-32">
+    <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-20 md:pt-0 md:-mt-32">
 
       {/* Frasi + Lapide */}
       {/* Frasi + Lapide */}
@@ -45,13 +45,13 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 1 }}
       >
         <Link href="https://www.instagram.com/rude___team/" target="_blank" rel="noopener noreferrer">
-          <Image src="/instagram.svg" alt="Instagram" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/instagram.svg" alt="Instagram" width={16} height={16} className="w-6 h-6 md:w-5 md:h-5" />
         </Link>
         <Link href="https://www.linkedin.com/company/rudeteam/" target="_blank" rel="noopener noreferrer">
-          <Image src="/linkedin.svg" alt="LinkedIn" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/linkedin.svg" alt="LinkedIn" width={16} height={16} className="w-6 h-6 md:w-5 md:h-5" />
         </Link>
         <a href="mailto:info@rude.team">
-          <Image src="/mail_quadrata.svg" alt="Email" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/mail_quadrata.svg" alt="Email" width={16} height={16} className="w-6 h-6 md:w-5 md:h-5" />
         </a>
       </motion.div>
 

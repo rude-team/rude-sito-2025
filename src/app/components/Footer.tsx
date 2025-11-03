@@ -24,13 +24,13 @@ export default function Footer({ withAnimation = false, isFixed = false }: Foote
         })}
       >
         <Link href="https://www.instagram.com/rude___team/" target="_blank" rel="noopener noreferrer">
-          <Image src="/instagram.svg" alt="Instagram" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/instagram.svg" alt="Instagram" width={24} height={24} className="w-6 h-6 md:w-5 md:h-5" />
         </Link>
         <Link href="https://www.linkedin.com/company/rudeteam/" target="_blank" rel="noopener noreferrer">
-          <Image src="/linkedin.svg" alt="LinkedIn" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} className="w-6 h-6 md:w-5 md:h-5" />
         </Link>
         <a href="mailto:info@rude.team">
-          <Image src="/mail_quadrata.svg" alt="Email" width={16} height={16} className="md:w-5 md:h-5" />
+          <Image src="/mail_quadrata.svg" alt="Email" width={24} height={24} className="w-6 h-6 md:w-5 md:h-5" />
         </a>
       </Wrapper>
 
