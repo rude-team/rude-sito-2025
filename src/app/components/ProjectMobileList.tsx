@@ -29,7 +29,7 @@ export default function ProjectMobileList({ projects }: ProjectMobileListProps) 
 
   return (
     <div className="md:hidden">
-      <div className="space-y-8">
+      <div className={`space-y-8 ${!hasMore ? 'pb-16' : ''}`}>
         {visibleProjects.map((project) => (
           <Link 
             key={project.id} 
@@ -67,7 +67,7 @@ export default function ProjectMobileList({ projects }: ProjectMobileListProps) 
 
       {/* Pulsante "Mostra di più" */}
       {hasMore && (
-        <div className="mt-8 text-center">
+        <div className="mt-8 mb-16 text-center">
           <button
             onClick={handleShowMore}
             className="px-6 py-3 border border-black font-bold hover:bg-black hover:text-white transition-all duration-200"

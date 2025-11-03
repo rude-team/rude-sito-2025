@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import projectsData from '@/data/projects.json'
+import ProjectGallery from '@/app/components/ProjectGallery'
+import VideoPlayer from '@/app/components/VideoPlayer'
 
 interface ProjectPageProps {
   params: {
@@ -18,21 +20,33 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start text-center px-4 pt-8">
-      <div className="max-w-4xl w-full">
+      <div className="max-w-[90rem] w-full">
+        {/* Nome del progetto */}
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">{project.title}</h1>
+        
+        {/* Nome del cliente */}
+        <p className="text-2xl md:text-3xl mb-6">{project.client}</p>
+        
+        {/* Descrizione lunga */}
+        <p className="text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto">
+          {project.longDescription}
+        </p>
+        
+        {/* Video player */}
+        <div className="w-full mb-12">
+          <VideoPlayer videoUrl={project.video || ''} videoThumb={project.videoThumb} />
+        </div>
+        
+        {/* Gallery */}
+        <ProjectGallery images={project.gallery || []} />
+        
+        {/* Back to work */}
         <Link 
           href="/work" 
-          className="inline-block mb-8 text-gray-600 hover:text-black transition-colors"
+          className="inline-block mt-8 mb-16 text-gray-600 hover:text-black transition-colors text-left"
         >
-          ← Back to Work
+          ← Back to work
         </Link>
-        
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">{project.title}</h1>
-        
-        <p className="text-lg md:text-xl mb-8">{project.client}</p>
-        
-        <div className="text-left">
-          <p className="text-gray-700 leading-relaxed">{project.longDescription}</p>
-        </div>
       </div>
     </main>
   )

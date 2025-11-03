@@ -15,7 +15,7 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
     <>
       {/* Navbar */}
       <nav className="w-full py-4 flex justify-center">
-        <div className="flex items-center space-x-8 md:space-x-6 text-2xl md:text-lg font-bold">
+        <div className="flex items-center space-x-8 md:space-x-8 text-2xl md:text-xl font-bold">
           <Link 
             href="/work" 
             className={`font-bold hover:line-through transition-all duration-150 ${
@@ -31,7 +31,7 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
               alt="Logo RUDE"
               width={48}
               height={48}
-              className="object-contain w-16 h-16 md:w-12 md:h-12"
+              className="object-contain w-16 h-16 md:w-16 md:h-16"
             />
           </Link>
 

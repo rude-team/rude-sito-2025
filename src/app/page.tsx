@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-8 md:pt-0">
+    <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-8 md:pt-0 md:-mt-32">
 
       {/* Frasi + Lapide */}
       {/* Frasi + Lapide */}

@@ -6,14 +6,15 @@ import Link from 'next/link'
 
 type FooterProps = {
   withAnimation?: boolean
+  isFixed?: boolean
 }
 
-export default function Footer({ withAnimation = false }: FooterProps) {
+export default function Footer({ withAnimation = false, isFixed = false }: FooterProps) {
   const Wrapper = withAnimation ? motion.div : 'div'
   const Text = withAnimation ? motion.p : 'p'
 
   return (
-    <footer className="flex flex-col items-center justify-center mt-4 mb-6">
+    <footer className={`flex flex-col items-center justify-center mt-4 mb-6 ${isFixed ? 'md:fixed md:bottom-0 md:left-0 md:right-0 md:mt-0 md:mb-6 md:bg-white' : ''}`}>
       <Wrapper
         className="flex gap-4 md:gap-6"
         {...(withAnimation && {
