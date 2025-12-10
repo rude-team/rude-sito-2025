@@ -1,30 +1,42 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import VideoModal from './components/VideoModal'
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const videoUrl = 'https://vimeo.com/1138108627?fl=ip&fe=ec'
+
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-20 md:pt-0 md:-mt-32">
+    <>
+      <main className="min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-center px-4 pt-20 md:pt-0 md:-mt-32">
 
-      {/* Frasi + Lapide */}
-      {/* Frasi + Lapide */}
-      <div className="w-full max-w-5xl mb-6 flex flex-col md:grid md:grid-cols-3 items-center justify-center text-center">
-        {/* Frase sinistra */}
-        <motion.p
-          initial={{ x: '-100vw', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="text-base md:text-xl mb-2 md:mb-0 md:justify-self-end whitespace-nowrap"
-        >
-          forse quelli della mala
-        </motion.p>
+        {/* Frasi + Lapide */}
+        {/* Frasi + Lapide */}
+        <div className="w-full max-w-5xl mb-6 flex flex-col md:grid md:grid-cols-3 items-center justify-center text-center">
+          {/* Frase sinistra */}
+          <motion.p
+            initial={{ x: '-100vw', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="text-base md:text-xl mb-2 md:mb-0 md:justify-self-end whitespace-nowrap"
+          >
+            forse quelli della mala
+          </motion.p>
 
-        {/* Lapide */}
-        <div className="flex justify-center">
-          <Image src="/lapide.png" alt="Lapide" width={200} height={200} className="md:w-[300px] md:h-[300px]" />
-        </div>
+          {/* Lapide - cliccabile */}
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="cursor-pointer hover:opacity-80 transition-opacity"
+              aria-label="Apri video"
+            >
+              <Image src="/lapide.png" alt="Lapide" width={200} height={200} className="md:w-[300px] md:h-[300px]" />
+            </button>
+          </div>
 
         {/* Frase destra */}
         <motion.p
@@ -65,6 +77,14 @@ export default function Home() {
         via arquà 13, milano
       </motion.p>
 
-    </main>
+      </main>
+
+      {/* Modale video */}
+      <VideoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        videoUrl={videoUrl}
+      />
+    </>
   )
 }

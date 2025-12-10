@@ -9,6 +9,7 @@ interface Project {
   title: string
   client: string
   image?: string
+  videoThumb?: string
 }
 
 interface ProjectSliderProps {

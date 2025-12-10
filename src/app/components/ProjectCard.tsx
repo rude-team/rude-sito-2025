@@ -8,16 +8,19 @@ interface ProjectCardProps {
     title: string
     client: string
     image?: string
+    videoThumb?: string
   }
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const thumbnail = project.image || project.videoThumb
+  
   return (
     <Link href={`/work/${project.slug}`} className="group block">
       <div className="w-full aspect-video bg-gray-100 relative overflow-hidden mb-4">
-        {project.image ? (
+        {thumbnail ? (
           <Image
-            src={project.image}
+            src={thumbnail}
             alt={project.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

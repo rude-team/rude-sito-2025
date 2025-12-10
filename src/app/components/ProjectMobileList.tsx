@@ -10,6 +10,7 @@ interface Project {
   title: string
   client: string
   image?: string
+  videoThumb?: string
 }
 
 interface ProjectMobileListProps {
@@ -38,9 +39,9 @@ export default function ProjectMobileList({ projects }: ProjectMobileListProps) 
           >
             {/* Immagine 16:9 */}
             <div className="w-full aspect-video bg-gray-100 relative overflow-hidden mb-4">
-              {project.image ? (
+              {project.image || project.videoThumb ? (
                 <Image
-                  src={project.image}
+                  src={project.image || project.videoThumb || ''}
                   alt={project.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"

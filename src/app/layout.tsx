@@ -10,8 +10,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: 'rude',
-  description: 'Forse quelli della mala, forse la pubblicità.',
+  title: 'rude | bottega creativa',
+  description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
   icons: {
     icon: '/favicon_01.png',
   },

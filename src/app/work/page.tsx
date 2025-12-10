@@ -4,6 +4,8 @@ import ProjectMobileList from '@/app/components/ProjectMobileList'
 
 export default function Work() {
   const { projects } = projectsData
+  // Filtra solo i progetti attivi (active !== false)
+  const activeProjects = projects.filter((project: any) => project.active !== false)
 
   return (
     <main className="min-h-screen md:h-screen w-full flex flex-col items-center justify-start md:justify-center px-4 pt-8 md:pt-0 pb-0 md:pb-24">
@@ -13,11 +15,11 @@ export default function Work() {
         
         {/* Versione desktop */}
         <div className="hidden md:block -mt-16">
-          <ProjectSlider projects={projects} />
+          <ProjectSlider projects={activeProjects} />
         </div>
         
         {/* Versione mobile */}
-        <ProjectMobileList projects={projects} />
+        <ProjectMobileList projects={activeProjects} />
       </div>
     </main>
   )
