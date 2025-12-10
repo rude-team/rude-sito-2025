@@ -1,7 +1,5 @@
 import './globals.css'
 import { Playfair_Display } from 'next/font/google'
-import Image from 'next/image'
-import Link from 'next/link'
 import ClientLayoutWrapper from './components/ClientLayoutWrapper'
 
 const playfair = Playfair_Display({

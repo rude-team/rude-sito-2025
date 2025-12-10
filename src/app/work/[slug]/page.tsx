@@ -4,6 +4,22 @@ import projectsData from '@/data/projects.json'
 import ProjectGallery from '@/app/components/ProjectGallery'
 import VideoPlayer from '@/app/components/VideoPlayer'
 
+interface Project {
+  id: number
+  slug: string
+  title: string
+  longDescription: string
+  image: string
+  video: string
+  videoThumb?: string
+  gallery: string[]
+  category: string
+  year: string
+  client: string
+  tags: string[]
+  active?: boolean
+}
+
 interface ProjectPageProps {
   params: {
     slug: string
@@ -12,10 +28,10 @@ interface ProjectPageProps {
 
 export default function ProjectPage({ params }: ProjectPageProps) {
   const { projects } = projectsData
-  const project = projects.find(p => p.slug === params.slug)
+  const project = projects.find(p => p.slug === params.slug) as Project | undefined
 
   // Mostra 404 se il progetto non esiste o non è attivo
-  if (!project || (project as any).active === false) {
+  if (!project || project.active === false) {
     notFound()
   }
 
@@ -60,7 +76,7 @@ export async function generateStaticParams() {
   const { projects } = projectsData
   
   return projects
-    .filter((project: any) => project.active !== false)
+    .filter((project: Project) => project.active !== false)
     .map((project) => ({
       slug: project.slug,
     }))

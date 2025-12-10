@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface VideoPlayerProps {
   videoUrl: string
@@ -73,10 +74,12 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
       <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
         {videoThumb ? (
           <>
-            <img
+            <Image
               src={videoThumb}
               alt="Video thumbnail"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
@@ -128,10 +131,12 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
       <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
         {videoThumb ? (
           <>
-            <img
+            <Image
               src={videoThumb}
               alt="Video thumbnail"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
@@ -183,10 +188,12 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
     <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
       {videoThumb ? (
         <>
-          <img
+          <Image
             src={videoThumb}
             alt="Video thumbnail"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            unoptimized
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
