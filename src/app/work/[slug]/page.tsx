@@ -21,14 +21,15 @@ interface Project {
 }
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
   const { projects } = projectsData
-  const project = projects.find(p => p.slug === params.slug) as Project | undefined
+  const project = projects.find(p => p.slug === slug) as Project | undefined
 
   // Mostra 404 se il progetto non esiste o non è attivo
   if (!project || project.active === false) {
