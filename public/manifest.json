@@ -1,0 +1,16 @@
+{
+  "name": "rude | bottega creativa",
+  "short_name": "rude",
+  "description": "forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon_01.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

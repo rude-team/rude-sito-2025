@@ -8,10 +8,66 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: 'rude | bottega creativa',
+  title: {
+    default: 'rude | bottega creativa',
+    template: '%s | rude',
+  },
   description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
+  keywords: ['pubblicità', 'creatività', 'advertising', 'marketing', 'brand', 'comunicazione'],
+  authors: [{ name: 'rude' }],
+  creator: 'rude',
+  publisher: 'rude',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://www.rude.team'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'it_IT',
+    url: 'https://www.rude.team',
+    siteName: 'rude | bottega creativa',
+    title: 'rude | bottega creativa',
+    description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
+    images: [
+      {
+        url: '/rude_logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'rude | bottega creativa',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'rude | bottega creativa',
+    description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
+    images: ['/rude_logo.png'],
+  },
   icons: {
-    icon: '/favicon_01.png',
+    icon: [
+      { url: '/favicon_01.png', sizes: 'any' },
+      { url: '/favicon_01.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon_01.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.json',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
