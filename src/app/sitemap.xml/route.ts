@@ -1,6 +1,16 @@
 import { NextResponse } from 'next/server'
 import projectsData from '@/data/projects.json'
 
+// Funzione per fare l'XML escaping dei caratteri speciali
+function escapeXml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
 export async function GET() {
   const baseUrl = 'https://rude.team'
   const currentDate = new Date().toISOString()
@@ -44,10 +54,10 @@ export async function GET() {
 ${allPages
   .map(
     (page) => `  <url>
-    <loc>${page.loc}</loc>
-    <lastmod>${page.lastmod}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
+    <loc>${escapeXml(page.loc)}</loc>
+    <lastmod>${escapeXml(page.lastmod)}</lastmod>
+    <changefreq>${escapeXml(page.changefreq)}</changefreq>
+    <priority>${escapeXml(page.priority)}</priority>
   </url>`
   )
   .join('\n')}
