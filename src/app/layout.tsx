@@ -22,14 +22,14 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: 'https://www.rude.team',
+  metadataBase: 'https://rude.team',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'it_IT',
-    url: 'https://www.rude.team',
+    url: 'https://rude.team',
     siteName: 'rude | bottega creativa',
     title: 'rude | bottega creativa',
     description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
