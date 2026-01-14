@@ -22,7 +22,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.rude.team'),
+  metadataBase: 'https://www.rude.team',
   alternates: {
     canonical: '/',
   },
