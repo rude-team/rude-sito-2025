@@ -8,9 +8,11 @@ import { motion } from 'framer-motion'
 
 export default function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isHome = pathname === '/'
-  const isWork = pathname.startsWith('/work')
-  const isAbout = pathname === '/about'
+  // Gestiamo il caso in cui pathname potrebbe essere undefined durante SSR
+  const safePathname = pathname || '/'
+  const isHome = safePathname === '/'
+  const isWork = safePathname.startsWith('/work')
+  const isAbout = safePathname === '/about'
 
   return (
     <>
@@ -48,8 +50,9 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
       </nav>
 
       {/* Fade-in semplice ad ogni cambio pagina */}
+      {/* Usiamo sempre motion.div per evitare hydration mismatch */}
       <motion.div
-        key={pathname}
+        key={safePathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
