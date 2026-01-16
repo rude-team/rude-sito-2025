@@ -50,12 +50,13 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon_01.png', sizes: 'any' },
-      { url: '/favicon_01.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' }, // ICO per Google Search e compatibilità
+      { url: '/favicon_01.png', sizes: 'any', type: 'image/png' }, // PNG per qualità migliore nella tab
     ],
     apple: [
-      { url: '/favicon_01.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon_01.png', sizes: '180x180', type: 'image/png' }, // PNG migliore per Apple
     ],
+    shortcut: '/favicon.ico', // ICO per shortcut
   },
   manifest: '/manifest.json',
   robots: {
