@@ -50,13 +50,14 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' }, // ICO per Google Search e compatibilità
-      { url: '/favicon_01.png', sizes: 'any', type: 'image/png' }, // PNG per qualità migliore nella tab
+      // Usiamo l'URL assoluto per l'icona principale così Google non ha scuse
+      { url: 'https://rude.team/favicon.ico', sizes: 'any' }, 
+      { url: 'https://rude.team/favicon_01.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: [
-      { url: '/favicon_01.png', sizes: '180x180', type: 'image/png' }, // PNG migliore per Apple
+      { url: 'https://rude.team/favicon_01.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico', // ICO per shortcut
+    shortcut: 'https://rude.team/favicon.ico',
   },
   manifest: '/manifest.json',
   robots: {
