@@ -12,7 +12,7 @@ export const metadata = {
     default: 'rude | bottega creativa',
     template: '%s | rude',
   },
-  description: 'forse quelli della mala, forse la pubblicità ¯\\_(ツ)_/¯',
+  description: 'forse quelli della mala, forse la pubblicità ¯\_(ツ)_/¯',
   keywords: ['pubblicità', 'creatività', 'advertising', 'marketing', 'brand', 'comunicazione'],
   authors: [{ name: 'rude' }],
   creator: 'rude',

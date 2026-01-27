@@ -169,6 +169,20 @@
       "client": "Epìlate",
       "tags": ["outdoor", "campaign", "stunt"],
       "active": false
+    },
+    {
+      "id": 13,
+      "slug": "mad-sandro",
+      "title": "Mad Sandro",
+      "longDescription": "Gestire l'amministrazione di una PMI può sembrare una condanna quotidiana. Scadenze, fatture, conti che non tornano. Un inferno molto concreto. Per Sibill abbiamo messo in scena quel momento di rottura, per poi mostrare l'alternativa: una gestione finanziaria finalmente semplice, chiara, tutta in un'unica piattaforma. Un film ironico e realistico che racconta come, con Sibill, anche l'amministrazione possa tornare a vedere la luce.",
+      "image": "",
+      "video": "https://vimeo.com/1158721079?share=copy&fl=sv&fe=ci",
+      "videoThumb": "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/mad-sandro-thumb.webp",
+      "gallery": ["https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/01.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/02.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/03.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/04.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/05.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/06.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/07.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/08.webp", "https://storage.googleapis.com/asset_sito_rude/img-lavori/mad-sandro/09.webp"],
+      "category": "Communication",
+      "year": "2024",
+      "client": "Sibill",
+      "tags": ["brand", "film", "communication", "saas"]
     }
   ]
 }
