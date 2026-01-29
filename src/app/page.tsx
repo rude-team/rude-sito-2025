@@ -16,19 +16,19 @@ export default function Home() {
 
         {/* Frasi + Lapide */}
         {/* Frasi + Lapide */}
-        <div className="w-full max-w-5xl mb-6 flex flex-col md:grid md:grid-cols-3 items-center justify-center text-center">
+        <h1 className="w-full max-w-5xl mb-6 flex flex-col md:grid md:grid-cols-3 items-center justify-center text-center">
           {/* Frase sinistra */}
-          <motion.p
+          <motion.span
             initial={{ x: '-100vw', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
             className="text-base md:text-xl mb-2 md:mb-0 md:justify-self-end whitespace-nowrap"
           >
             forse quelli della mala
-          </motion.p>
+          </motion.span>
 
           {/* Lapide - cliccabile */}
-          <div className="flex justify-center">
+          <span className="flex justify-center">
             <button
               onClick={() => setIsModalOpen(true)}
               className="cursor-pointer hover:opacity-80 transition-opacity"
@@ -36,18 +36,18 @@ export default function Home() {
             >
               <Image src="/lapide.png" alt="Lapide" width={200} height={200} className="md:w-[300px] md:h-[300px]" />
             </button>
-          </div>
+          </span>
 
         {/* Frase destra */}
-        <motion.p
+        <motion.span
           initial={{ x: '100vw', opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
           className="text-base md:text-xl mt-2 md:mt-0 md:justify-self-start whitespace-nowrap"
         >
           forse la pubblicità
-        </motion.p>
-      </div>
+        </motion.span>
+      </h1>
 
       {/* Icone Social */}
       <motion.div
