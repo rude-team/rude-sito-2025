@@ -2,7 +2,9 @@ import ProjectSlider from '@/app/components/ProjectSlider'
 import ProjectMobileList from '@/app/components/ProjectMobileList'
 import { getOrderedWorks } from '@/sanity/queries'
 
-export const revalidate = 60
+// La cache è gestita via revalidateTag("sanity") dal webhook Sanity.
+// Non serve un TTL automatico: la pagina rimane fresca finché non arriva una modifica.
+export const revalidate = false
 
 export default async function Work() {
   const works = await getOrderedWorks()

@@ -25,6 +25,7 @@ export async function sanityFetch<T>(
   params: QueryParams = {},
 ): Promise<T> {
   return client.fetch<T>(query, params, {
+    cache: 'force-cache',
     next: { tags: ['sanity'] },
   });
 }

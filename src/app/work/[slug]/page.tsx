@@ -5,7 +5,8 @@ import ProjectGallery from '@/app/components/ProjectGallery'
 import VideoPlayer from '@/app/components/VideoPlayer'
 import { getAllWorkIds, getWorkById } from '@/sanity/queries'
 
-export const revalidate = 60
+// La cache è gestita via revalidateTag("sanity") dal webhook Sanity.
+export const revalidate = false
 
 interface ProjectPageProps {
   params: Promise<{
