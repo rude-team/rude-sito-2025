@@ -89,18 +89,13 @@ Il sito non utilizza un CMS headless esterno al momento. I dati dei progetti son
 
 ## 🚢 Deployment
 
-Il progetto è configurato per essere containerizzato e deployato su Google Cloud Platform (App Engine o Cloud Run) tramite Cloud Build.
+Il progetto supporta deployment su **Google Cloud Platform (Produzione)** e **Vercel (Staging/Migrazione)**.
 
-- **Dockerfile:** Definisce l'immagine per la produzione.
-- **cloudbuild.yaml:** Configurazione per la CI/CD su GCP.
-- **app.yaml:** Configurazione per Google App Engine.
+Per istruzioni dettagliate su come deployare, gestire i branch e configurare gli ambienti, consulta il file [DEPLOYMENT.md](../DEPLOYMENT.md) nella root del progetto.
 
-Per creare una build di produzione locale:
-
-```bash
-npm run build
-npm start
-```
+### Workflow Rapido
+- **Produzione (GCP):** Push su branch `main`.
+- **Staging (Vercel):** Push su branch `vercel-migration`.
 
 ## 🎨 Styling e Animazioni
 
