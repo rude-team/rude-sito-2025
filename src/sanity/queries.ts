@@ -3,8 +3,8 @@ import type { Work } from '@/types/sanity';
 
 /**
  * Proiezione GROQ riutilizzabile per un documento `work`.
- * Risolve le reference di `client` e normalizza gli oggetti custom.
- * Usa `_id` come identificatore di route perché i documenti non hanno slug.
+ * Risolve le reference di `client`.
+ * Usa `_id` come identificatore di route (i documenti non hanno slug).
  */
 const WORK_PROJECTION = `{
   _id,
@@ -19,13 +19,17 @@ const WORK_PROJECTION = `{
   gallery
 }`;
 
-/** Recupera tutti i work pubblicati, ordinati per data di creazione decrescente. */
-export async function getAllWorks(): Promise<Work[]> {
-  return client.fetch<Work[]>(
-    `*[_type == "work"] | order(_createdAt desc) ${WORK_PROJECTION}`,
+/**
+ * Recupera i work nell'ordine definito nel CMS tramite il documento singleton `workPage`.
+ * Il campo `items` contiene un array di reference ai work nell'ordine visuale corretto.
+ */
+export async function getOrderedWorks(): Promise<Work[]> {
+  const results = await client.fetch<Work[] | null>(
+    `*[_type == "workPage"][0].items[]-> ${WORK_PROJECTION}`,
     {},
     { next: { revalidate: 60 } }
   );
+  return results ?? [];
 }
 
 /** Recupera un singolo work tramite il suo `_id`. */
@@ -37,12 +41,15 @@ export async function getWorkById(id: string): Promise<Work | null> {
   );
 }
 
-/** Recupera solo gli _id di tutti i work (per generateStaticParams). */
+/**
+ * Recupera gli _id di tutti i work nell'ordine definito da workPage.
+ * Usato da generateStaticParams per pre-renderizzare le pagine di dettaglio.
+ */
 export async function getAllWorkIds(): Promise<string[]> {
-  const results = await client.fetch<{ _id: string }[]>(
-    `*[_type == "work"]{ _id }`,
+  const results = await client.fetch<{ _id: string }[] | null>(
+    `*[_type == "workPage"][0].items[]->{ _id }`,
     {},
     { next: { revalidate: 60 } }
   );
-  return results.map((r) => r._id);
+  return (results ?? []).map((r) => r._id);
 }

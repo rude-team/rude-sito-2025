@@ -54,7 +54,7 @@ export interface GalleryImageObject {
   image: SanityImage;
 }
 
-// ─── Main document type ───────────────────────────────────────────────────────
+// ─── Main document types ──────────────────────────────────────────────────────
 
 /**
  * Documento `work` così come restituito dalla query GROQ con join delle reference.
@@ -77,4 +77,15 @@ export interface Work {
   slug?: { current: string };
   category?: string;
   tags?: string[];
+}
+
+/**
+ * Documento singleton `workPage`.
+ * Contiene il campo `items` con i riferimenti ai work nell'ordine visuale
+ * definito nel CMS. Usato per determinare l'ordinamento della pagina /work.
+ */
+export interface WorkPage {
+  _id: 'workPage';
+  _type: 'workPage';
+  items: Work[];
 }
