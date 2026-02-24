@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import projectsData from '@/data/projects.json'
+import { getAllWorkIds } from '@/sanity/queries'
 
 // Funzione per fare l'XML escaping dei caratteri speciali
 function escapeXml(unsafe: string): string {
@@ -37,15 +37,14 @@ export async function GET() {
     },
   ]
 
-  // Pagine dinamiche dei progetti (solo quelli attivi)
-  const projectPages = projectsData.projects
-    .filter((project: { active?: boolean }) => project.active !== false)
-    .map((project: { slug: string }) => ({
-      loc: `${baseUrl}/work/${project.slug}`,
-      lastmod: currentDate,
-      changefreq: 'monthly',
-      priority: '0.7',
-    }))
+  // Pagine dinamiche dei progetti da Sanity
+  const workIds = await getAllWorkIds()
+  const projectPages = workIds.map((id) => ({
+    loc: `${baseUrl}/work/${id}`,
+    lastmod: currentDate,
+    changefreq: 'monthly',
+    priority: '0.7',
+  }))
 
   const allPages = [...staticPages, ...projectPages]
 

@@ -2,9 +2,11 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
+import { urlFor } from '@/sanity/client'
+import type { GalleryImageObject } from '@/types/sanity'
 
 interface ProjectGalleryProps {
-  images: string[]
+  images: GalleryImageObject[]
 }
 
 export default function ProjectGallery({ images }: ProjectGalleryProps) {
@@ -68,27 +70,30 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
             transform: `translateX(${translateXDesktop}%)`,
           }}
         >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-1/3 px-3"
-            >
-              <div className="w-full aspect-video bg-gray-100 relative overflow-hidden">
-                {image ? (
-                  <Image
-                    src={image}
-                    alt={`Gallery image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    Image {index + 1}
-                  </div>
-                )}
+          {images.map((item, index) => {
+            const imgUrl = item.image ? urlFor(item.image).width(800).height(450).url() : null
+            return (
+              <div
+                key={item._key}
+                className="flex-shrink-0 w-1/3 px-3"
+              >
+                <div className="w-full aspect-video bg-gray-100 relative overflow-hidden">
+                  {imgUrl ? (
+                    <Image
+                      src={imgUrl}
+                      alt={`Gallery image ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      Image {index + 1}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Frecce di navigazione desktop */}
@@ -155,34 +160,37 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
             transform: `translateX(${translateXMobile}%)`,
           }}
         >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-full"
-            >
-              <div className="w-full aspect-video bg-gray-100 relative overflow-hidden">
-                {image ? (
-                  <Image
-                    src={image}
-                    alt={`Gallery image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    Image {index + 1}
-                  </div>
-                )}
+          {images.map((item, index) => {
+            const imgUrl = item.image ? urlFor(item.image).width(800).height(450).url() : null
+            return (
+              <div
+                key={item._key}
+                className="flex-shrink-0 w-full"
+              >
+                <div className="w-full aspect-video bg-gray-100 relative overflow-hidden">
+                  {imgUrl ? (
+                    <Image
+                      src={imgUrl}
+                      alt={`Gallery image ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      Image {index + 1}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Indicatori (pallini) mobile */}
         <div className="flex justify-center items-center gap-2 mt-6">
-          {images.map((_, index) => (
+          {images.map((item, index) => (
             <div
-              key={index}
+              key={item._key}
               className={`transition-all duration-300 rounded-full ${
                 index === currentImageIndex
                   ? 'w-3 h-3 bg-black'

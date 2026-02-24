@@ -8,7 +8,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
         port: '',
-        pathname: '/asset_sito_rude/**', // Puoi essere più specifico, ma ** è un jolly che copre tutti i percorsi sotto il tuo bucket
+        pathname: '/asset_sito_rude/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/images/**',
       },
     ],
   },

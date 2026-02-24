@@ -2,13 +2,23 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { urlFor } from '@/sanity/client'
+import type { SanityImage } from '@/types/sanity'
 
 interface VideoPlayerProps {
   videoUrl: string
-  videoThumb?: string
+  /** URL stringa oppure oggetto immagine Sanity */
+  videoThumb?: string | SanityImage
 }
 
 export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) {
+  const thumbUrl: string | undefined =
+    typeof videoThumb === 'string'
+      ? videoThumb
+      : videoThumb
+        ? urlFor(videoThumb).width(1280).height(720).url()
+        : undefined
+
   const [isPlaying, setIsPlaying] = useState(false)
   const [vimeoVideoId, setVimeoVideoId] = useState<string | null>(null)
   const [isGoogleDrive, setIsGoogleDrive] = useState(false)
@@ -53,6 +63,33 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
     )
   }
 
+  const PlayButton = () => (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
+        <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
+  )
+
+  const ThumbOrPlaceholder = () => (
+    thumbUrl ? (
+      <>
+        <Image src={thumbUrl} alt="Video thumbnail" fill className="object-cover" unoptimized />
+        <PlayButton />
+      </>
+    ) : (
+      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+        <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
+          <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    )
+  )
+
   // Vimeo player
   if (vimeoVideoId) {
     if (isPlaying) {
@@ -69,43 +106,9 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
         </div>
       )
     }
-
     return (
       <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
-        {videoThumb ? (
-          <>
-            <Image
-              src={videoThumb}
-              alt="Video thumbnail"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-                <svg
-                  className="w-10 h-10 text-white ml-1"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-          </>
-        ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-              <svg
-                className="w-10 h-10 text-white ml-1"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        )}
+        <ThumbOrPlaceholder />
       </div>
     )
   }
@@ -126,43 +129,9 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
         </div>
       )
     }
-
     return (
       <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
-        {videoThumb ? (
-          <>
-            <Image
-              src={videoThumb}
-              alt="Video thumbnail"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-                <svg
-                  className="w-10 h-10 text-white ml-1"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-          </>
-        ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-              <svg
-                className="w-10 h-10 text-white ml-1"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        )}
+        <ThumbOrPlaceholder />
       </div>
     )
   }
@@ -173,7 +142,7 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
       <div className="w-full aspect-video bg-black">
         <video
           src={videoUrl}
-          poster={videoThumb}
+          poster={thumbUrl}
           controls
           autoPlay
           className="w-full h-full object-contain"
@@ -186,40 +155,7 @@ export default function VideoPlayer({ videoUrl, videoThumb }: VideoPlayerProps) 
 
   return (
     <div className="w-full aspect-video bg-gray-100 relative overflow-hidden cursor-pointer group" onClick={handlePlay}>
-      {videoThumb ? (
-        <>
-          <Image
-            src={videoThumb}
-            alt="Video thumbnail"
-            fill
-            className="object-cover"
-            unoptimized
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-              <svg
-                className="w-10 h-10 text-white ml-1"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-          <div className="w-20 h-20 rounded-full bg-black/70 flex items-center justify-center group-hover:bg-black/90 transition-all">
-            <svg
-              className="w-10 h-10 text-white ml-1"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        </div>
-      )}
+      <ThumbOrPlaceholder />
     </div>
   )
 }

@@ -2,18 +2,10 @@
 
 import { useState } from 'react'
 import ProjectCard from './ProjectCard'
-
-interface Project {
-  id: number
-  slug: string
-  title: string
-  client: string
-  image?: string
-  videoThumb?: string
-}
+import type { Work } from '@/types/sanity'
 
 interface ProjectSliderProps {
-  projects: Project[]
+  projects: Work[]
 }
 
 export default function ProjectSlider({ projects }: ProjectSliderProps) {
@@ -42,8 +34,8 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
       >
         {projects.map((project) => (
           <div
-            key={project.id}
-            className="flex-shrink-0 w-1/3 px-3" // 3 progetti per riga
+            key={project._id}
+            className="flex-shrink-0 w-1/3 px-3"
           >
             <ProjectCard project={project} />
           </div>

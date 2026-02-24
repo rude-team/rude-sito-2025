@@ -3,18 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
-interface Project {
-  id: number
-  slug: string
-  title: string
-  client: string
-  image?: string
-  videoThumb?: string
-}
+import { urlFor } from '@/sanity/client'
+import type { Work } from '@/types/sanity'
 
 interface ProjectMobileListProps {
-  projects: Project[]
+  projects: Work[]
 }
 
 export default function ProjectMobileList({ projects }: ProjectMobileListProps) {
@@ -31,39 +24,41 @@ export default function ProjectMobileList({ projects }: ProjectMobileListProps) 
   return (
     <div className="md:hidden">
       <div className={`space-y-8 ${!hasMore ? 'pb-16' : ''}`}>
-        {visibleProjects.map((project) => (
-          <Link 
-            key={project.id} 
-            href={`/work/${project.slug}`}
-            className="block group"
-          >
-            {/* Immagine 16:9 */}
-            <div className="w-full aspect-video bg-gray-100 relative overflow-hidden mb-4">
-              {project.image || project.videoThumb ? (
-                <Image
-                  src={project.image || project.videoThumb || ''}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  {project.title}
-                </div>
-              )}
-            </div>
-            
-            {/* Nome del progetto */}
-            <h3 className="text-xl font-bold mb-2 group-hover:underline">
-              {project.title}
-            </h3>
-            
-            {/* Nome del cliente */}
-            <p className="text-gray-600">
-              {project.client}
-            </p>
-          </Link>
-        ))}
+        {visibleProjects.map((project) => {
+          const coverUrl = project.cover ? urlFor(project.cover).width(800).height(450).url() : null
+          const clientNames = project.client?.map((c) => c.name).join(', ') ?? ''
+
+          return (
+            <Link
+              key={project._id}
+              href={`/work/${project._id}`}
+              className="block group"
+            >
+              <div className="w-full aspect-video bg-gray-100 relative overflow-hidden mb-4">
+                {coverUrl ? (
+                  <Image
+                    src={coverUrl}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    {project.title}
+                  </div>
+                )}
+              </div>
+
+              <h3 className="text-xl font-bold mb-2 group-hover:underline">
+                {project.title}
+              </h3>
+
+              <p className="text-gray-600">
+                {clientNames}
+              </p>
+            </Link>
+          )
+        })}
       </div>
 
       {/* Pulsante "Mostra di più" */}

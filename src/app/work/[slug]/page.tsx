@@ -1,24 +1,11 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import projectsData from '@/data/projects.json'
+import { PortableText } from '@portabletext/react'
 import ProjectGallery from '@/app/components/ProjectGallery'
 import VideoPlayer from '@/app/components/VideoPlayer'
+import { getAllWorkIds, getWorkById } from '@/sanity/queries'
 
-interface Project {
-  id: number
-  slug: string
-  title: string
-  longDescription: string
-  image: string
-  video: string
-  videoThumb?: string
-  gallery: string[]
-  category: string
-  year: string
-  client: string
-  tags: string[]
-  active?: boolean
-}
+export const revalidate = 60
 
 interface ProjectPageProps {
   params: Promise<{
@@ -28,41 +15,49 @@ interface ProjectPageProps {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
-  const { projects } = projectsData
-  const project = projects.find(p => p.slug === slug) as Project | undefined
+  const work = await getWorkById(slug)
 
-  // Mostra 404 se il progetto non esiste o non è attivo
-  if (!project || project.active === false) {
+  if (!work) {
     notFound()
   }
+
+  const clientNames = work.client?.map((c) => c.name).join(', ') ?? ''
+  const galleryImages = (work.gallery ?? []).filter((item) => item.image)
 
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start text-center px-4 pt-8">
       <div className="max-w-[90rem] w-full">
         {/* Nome del progetto */}
-        <h1 className="text-2xl md:text-3xl font-bold mb-4">{project.title}</h1>
-        
+        <h1 className="text-2xl md:text-3xl font-bold mb-4">{work.title}</h1>
+
         {/* Nome del cliente */}
-        <p className="text-xl md:text-2xl mb-6">{project.client}</p>
-        
-        {/* Descrizione lunga */}
-        <p className="text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto">
-          {project.longDescription}
-        </p>
-        
+        {clientNames && (
+          <p className="text-xl md:text-2xl mb-6">{clientNames}</p>
+        )}
+
+        {/* Descrizione (Portable Text) */}
+        {work.description?.length > 0 && (
+          <div className="text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto text-left md:text-center [&_p]:mb-4">
+            <PortableText value={work.description} />
+          </div>
+        )}
+
         {/* Video player */}
         <div className="w-full mb-12">
-          <VideoPlayer videoUrl={project.video || ''} videoThumb={project.videoThumb} />
+          <VideoPlayer
+            videoUrl={work.video?.url ?? ''}
+            videoThumb={work.video?.poster}
+          />
         </div>
-        
-        {/* Gallery - nascosta per "Un Profilo Fuori dai Comuni" e "The Director's Shot" */}
-        {project.slug !== 'un-profilo-fuori-dai-comuni' && project.slug !== 'the-directors-shot' && (
-          <ProjectGallery images={project.gallery || []} />
+
+        {/* Gallery */}
+        {galleryImages.length > 0 && (
+          <ProjectGallery images={galleryImages} />
         )}
-        
+
         {/* Back to work */}
-        <Link 
-          href="/work" 
+        <Link
+          href="/work"
           className="inline-block mt-8 mb-16 text-gray-600 hover:text-black transition-colors text-left"
         >
           ← Back to work
@@ -72,13 +67,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   )
 }
 
-// Generate static params only for active projects
 export async function generateStaticParams() {
-  const { projects } = projectsData
-  
-  return projects
-    .filter((project: Project) => project.active !== false)
-    .map((project) => ({
-      slug: project.slug,
-    }))
+  const ids = await getAllWorkIds()
+  return ids.map((id) => ({ slug: id }))
 }
