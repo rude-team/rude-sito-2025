@@ -40,7 +40,7 @@ Questo progetto è configurato per essere deployato su Google Cloud Platform uti
 - `.dockerignore` - File da escludere dal container Docker
 - `cloudbuild.yaml` - Configurazione per automatizzare build e deploy
 - `.gcloudignore` - File da escludere durante il deploy
-- `app.yaml` - Configurazione alternativa per App Engine
+- `app.yaml` - Configurazione alternativa per App Engine 
 - `next.config.ts` - Aggiornato per supportare l'output standalone
 
 ### Metodo A: Deploy Automatico (Cloud Build)
