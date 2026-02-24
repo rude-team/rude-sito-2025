@@ -1,4 +1,4 @@
-import { client } from './client';
+import { sanityFetch } from './client';
 import type { Work } from '@/types/sanity';
 
 /**
@@ -24,20 +24,17 @@ const WORK_PROJECTION = `{
  * Il campo `items` contiene un array di reference ai work nell'ordine visuale corretto.
  */
 export async function getOrderedWorks(): Promise<Work[]> {
-  const results = await client.fetch<Work[] | null>(
-    `*[_type == "workPage"][0].items[]-> ${WORK_PROJECTION}`,
-    {},
-    { next: { revalidate: 60 } }
+  const results = await sanityFetch<Work[] | null>(
+    `*[_type == "workPage"][0].items[]-> ${WORK_PROJECTION}`
   );
   return results ?? [];
 }
 
 /** Recupera un singolo work tramite il suo `_id`. */
 export async function getWorkById(id: string): Promise<Work | null> {
-  return client.fetch<Work | null>(
+  return sanityFetch<Work | null>(
     `*[_type == "work" && _id == $id][0] ${WORK_PROJECTION}`,
-    { id },
-    { next: { revalidate: 60 } }
+    { id }
   );
 }
 
@@ -46,10 +43,8 @@ export async function getWorkById(id: string): Promise<Work | null> {
  * Usato da generateStaticParams per pre-renderizzare le pagine di dettaglio.
  */
 export async function getAllWorkIds(): Promise<string[]> {
-  const results = await client.fetch<{ _id: string }[] | null>(
-    `*[_type == "workPage"][0].items[]->{ _id }`,
-    {},
-    { next: { revalidate: 60 } }
+  const results = await sanityFetch<{ _id: string }[] | null>(
+    `*[_type == "workPage"][0].items[]->{ _id }`
   );
   return (results ?? []).map((r) => r._id);
 }
