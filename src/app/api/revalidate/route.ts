@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    revalidateTag('sanity');
+    revalidateTag('sanity', {});
 
     return NextResponse.json({
       status: 200,
