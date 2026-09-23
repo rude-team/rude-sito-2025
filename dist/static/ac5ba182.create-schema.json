@@ -1,0 +1,674 @@
+[
+  {
+    "fields": [
+      {
+        "name": "leftText",
+        "type": "string",
+        "title": "Testo sinistro"
+      },
+      {
+        "name": "rightText",
+        "type": "string",
+        "title": "Testo destro"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Immagine centrale"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Link al video che si apre cliccando sull'immagine centrale",
+        "name": "videoUrl",
+        "type": "url",
+        "title": "URL Video (Vimeo)"
+      }
+    ],
+    "name": "homePage",
+    "type": "document",
+    "title": "Home"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Titolo"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Testo"
+      }
+    ],
+    "name": "aboutPage",
+    "type": "document",
+    "title": "About"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "type": "work"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to work"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Progetti (ordine visuale)"
+      }
+    ],
+    "name": "workPage",
+    "type": "document",
+    "title": "Work (ordine)"
+  },
+  {
+    "fields": [
+      {
+        "name": "address",
+        "type": "string",
+        "title": "Indirizzo"
+      },
+      {
+        "of": [
+          {
+            "type": "footerSocialObject",
+            "title": "Social"
+          }
+        ],
+        "name": "socials",
+        "type": "array",
+        "title": "Social"
+      }
+    ],
+    "name": "footer",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "name": "metaKeywords",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "canonicalUrl",
+        "type": "url",
+        "title": "Canonical URL"
+      },
+      {
+        "name": "ogTitle",
+        "type": "string",
+        "title": "OG Title"
+      },
+      {
+        "rows": 3,
+        "name": "ogDescription",
+        "type": "text",
+        "title": "OG Description"
+      },
+      {
+        "name": "ogImage",
+        "type": "image",
+        "title": "OG Image"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "ogUrl",
+        "type": "url",
+        "title": "OG URL"
+      },
+      {
+        "name": "ogType",
+        "type": "string",
+        "title": "OG Type"
+      },
+      {
+        "name": "ogSiteName",
+        "type": "string",
+        "title": "OG Site Name"
+      }
+    ],
+    "name": "seo",
+    "type": "document",
+    "title": "SEO"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Titolo"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "cover",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "type": "client"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to cliente"
+          }
+        ],
+        "name": "client",
+        "type": "array",
+        "title": "Clienti"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "description",
+        "type": "array",
+        "title": "Descrizione"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "mainImage",
+        "type": "image",
+        "title": "Immagine principale"
+      },
+      {
+        "name": "video",
+        "type": "videoObject"
+      },
+      {
+        "of": [
+          {
+            "type": "galleryImageObject",
+            "title": "Immagine galleria"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Galleria"
+      },
+      {
+        "name": "year",
+        "type": "number",
+        "title": "Anno"
+      },
+      {
+        "to": [
+          {
+            "type": "category"
+          }
+        ],
+        "name": "category",
+        "type": "reference",
+        "title": "Categoria"
+      },
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "type": "tag"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to tag"
+          }
+        ],
+        "name": "tags",
+        "type": "array",
+        "title": "Tag"
+      }
+    ],
+    "name": "work",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Nome"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "website",
+        "type": "url",
+        "title": "Sito web"
+      }
+    ],
+    "name": "client",
+    "type": "document",
+    "title": "Cliente"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Nome"
+      }
+    ],
+    "name": "category",
+    "type": "document",
+    "title": "Categoria"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Nome"
+      }
+    ],
+    "name": "tag",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url",
+        "title": "URL Video (Vimeo)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "poster",
+        "type": "image"
+      }
+    ],
+    "name": "videoObject",
+    "type": "object",
+    "title": "Video"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Immagine"
+      }
+    ],
+    "name": "galleryImageObject",
+    "type": "object",
+    "title": "Immagine galleria"
+  },
+  {
+    "fields": [
+      {
+        "name": "icon",
+        "type": "image",
+        "title": "Icona"
+      },
+      {
+        "description": "URL o mailto:indirizzo@email.com",
+        "name": "link",
+        "type": "string"
+      }
+    ],
+    "name": "footerSocialObject",
+    "type": "object",
+    "title": "Social"
+  }
+]
