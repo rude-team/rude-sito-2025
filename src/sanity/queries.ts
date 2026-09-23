@@ -1,5 +1,5 @@
 import { sanityFetch } from './client';
-import type { Work } from '@/types/sanity';
+import type { Work, AboutPage, HomePage } from '@/types/sanity';
 
 /**
  * Proiezione GROQ riutilizzabile per un documento `work`.
@@ -47,4 +47,18 @@ export async function getAllWorkIds(): Promise<string[]> {
     `*[_type == "workPage"][0].items[]->{ _id }`
   );
   return (results ?? []).map((r) => r._id);
+}
+
+/** Recupera il documento singleton `aboutPage`. */
+export async function getAboutPage(): Promise<AboutPage | null> {
+  return sanityFetch<AboutPage | null>(
+    `*[_type == "aboutPage"][0]{ _id, _type, title, body }`
+  );
+}
+
+/** Recupera il documento singleton `homePage`. */
+export async function getHomePage(): Promise<HomePage | null> {
+  return sanityFetch<HomePage | null>(
+    `*[_type == "homePage"][0]{ _id, _type, leftText, rightText, image, videoUrl }`
+  );
 }

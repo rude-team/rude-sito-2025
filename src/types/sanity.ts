@@ -89,3 +89,27 @@ export interface WorkPage {
   _type: 'workPage';
   items: Work[];
 }
+
+/**
+ * Documento singleton `aboutPage`.
+ * Contiene il titolo e il corpo della pagina About.
+ */
+export interface AboutPage {
+  _id: 'aboutPage';
+  _type: 'aboutPage';
+  title: string;
+  body: PortableTextBlock[];
+}
+
+/**
+ * Documento singleton `homePage`.
+ * Contiene i testi laterali, l'immagine centrale e il link al video.
+ */
+export interface HomePage {
+  _id: 'homePage';
+  _type: 'homePage';
+  leftText: string;
+  rightText: string;
+  image?: SanityImage;
+  videoUrl?: string;
+}
