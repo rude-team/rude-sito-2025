@@ -4,7 +4,7 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './src/sanity/schema';
 
 export default defineConfig({
-  name: 'rude-sito-2025',
+  name: 'default',
   title: 'rude | CMS',
   basePath: '/studio',
 

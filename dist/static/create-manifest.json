@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "createdAt": "2026-09-23T09:52:12.912Z",
+  "createdAt": "2026-09-23T10:01:01.809Z",
   "workspaces": [
     {
-      "name": "rude-sito-2025",
+      "name": "default",
       "title": "rude | CMS",
       "basePath": "/studio",
       "projectId": "n2ne4xrh",
